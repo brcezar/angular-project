@@ -1,0 +1,111 @@
+<div class="container mb-5">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div *ngFor="let qualquerCoisa of cards" class="col">
+      <div class="card h-100">
+        <div #ngfngf>
+        </div>
+        <img src="{{ qualquerCoisa.imgUrl }}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{ qualquerCoisa.title }}</h5>
+          <p class="card-text">
+            {{ qualquerCoisa.description }}
+          </p>
+        </div>
+        <app-button [classcolor]="'alert-danger'">
+        </app-button>
+        <div class="card-footer">
+          <small class="text-muted">{{ qualquerCoisa.extraInfo }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template> Teste </ng-template>
+
+<div *ngIf="error; else comSucesso" class="alert alert-danger">
+  Alerta com error
+</div>
+
+<ng-template #comSucesso>
+  <div class="alert alert-success">Alerta com sucesso</div>
+</ng-template>
+
+<div [class.alert-danger]="error" [class.alert-info]="!error" class="alert">
+  A simple primary alert—check it out
+</div>
+
+<div [ngClass]="error ? 'alert-danger' : 'alert-info'" class="alert">
+  A simple primary alert—check it out
+</div>
+
+<div class="container mt-3">
+  Valor: {{ valorDoMeuInput }}
+  <div class="input-group mb-3">
+    <input [(ngModel)]="valorDoMeuInput" type="text" class="form-control" />
+  </div>
+</div>
+
+<div class="container mt-3">
+  <div class="input-group mb-3">
+    <input
+      #meuInput
+      (blur)="onBlur(meuInput)"
+      (keyup)="onKeyUp($event)"
+      type="text"
+      class="form-control"
+    />
+  </div>
+  {{ inputValue }}
+</div>
+
+<div class="container">
+  <p>{{ data | date: 'HH:mm:ss' }}</p>
+</div>
+
+<div class="container">
+  <div class="card" style="width: 18rem;">
+    <img src="{{ cardImage }}" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">{{ cardTitle }}</h5>
+      <p class="card-text">
+        {{ cardDescription }}
+      </p>
+      <button (click)="onEvent($event)" class="btn btn-primary">
+        {{ cardButtonText }} = {{ cardButtonClickCount }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-3">
+  <ul class="list-group">
+    <li *ngFor="let nome of nomes; let i = index" class="list-group-item">
+      {{ i }} - {{ nome }}
+    </li>
+  </ul>
+</div>
+
+<div class="container mt-3">
+  <p>Exemplo de interporlação: {{ texto }}</p>
+  <p>Operações: {{ 1 + 1 }}</p>
+  <p>{{ nomes.length }}</p>
+  <p>{{ getValor() }}</p>
+  <p>{{ true && false }}</p>
+  <p>{{ getValorNulo() || 'valor nulo' }}</p>
+</div>
+
+<img src="{{ urlImage }}" />
+<img [src]="urlImage" />
+<img bind-src="urlImage" />
+
+<div class="container">
+  <p>Exemplo de interporlação com pipe: {{ texto | uppercase }}</p>
+  <p>Exemplo de interporlação com pipe: {{ texto | lowercase }}</p>
+  <p>Exemplo de interporlação com pipe: {{ texto | lowercase }}</p>
+  <p>{{ data }}</p>
+  <p>{{ data | date: 'dd/MM/yyyy hh:mm' }}</p>
+  <p>{{ 12.13 | currency: 'BRL' }}</p>
+  <p>{{ 0.51 | percent }}</p>
+  <p>{{ 12.5999 | number: '2.2-2' | currency: 'BRL' }}</p>
+</div>
